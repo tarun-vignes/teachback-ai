@@ -4,7 +4,7 @@
 
 Teachback helps students notice gaps in their understanding by explaining a concept in their own words. It compares the explanation with their notes, returns source-linked feedback, asks a practice question, and creates a downloadable before-and-after learning receipt.
 
-Built for [Build Your First AI App 2026](EVENT.md). Functional local prototype; no public deployment has been published yet.
+Built for [Build Your First AI App 2026](EVENT.md). Live prototype: [Try Teachback](https://teachback-ai-a8n3.onrender.com). Free hosting can take time to wake after inactivity.
 
 Source repository: [tarun-vignes/teachback-ai](https://github.com/tarun-vignes/teachback-ai).
 
@@ -26,7 +26,7 @@ Copy-Item .env.example .env
 # Edit .env to add your own key, then restart the server.
 ```
 
-An existing environment key takes precedence over the optional file. Never commit your key. The default model is `gemini-3.1-flash-lite`; change `GEMINI_MODEL` if necessary. Obtain a key through [Google AI Studio](https://aistudio.google.com/apikey). Provider availability, terms, and quotas apply; this project does not guarantee free inference.
+An existing environment key takes precedence over the optional file. Never commit your key. The default model is `gemini-3.5-flash-lite`; change `GEMINI_MODEL` if necessary. Obtain a key through [Google AI Studio](https://aistudio.google.com/apikey). Provider availability, terms, and quotas apply; this project does not guarantee free inference.
 
 ## Main workflow
 

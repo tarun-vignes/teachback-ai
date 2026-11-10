@@ -88,7 +88,7 @@ Suggested milestones:
 - **November 24–26:** finish documentation, capture the demo, and prepare submission text.
 - **November 27:** verify links and submit well before 5:00 p.m. EST.
 
-These milestones are a proposed local plan, not organizer requirements. Teachback now uses Gemini and has a source repository. Public deployment and participation registration remain outstanding.
+These milestones are a proposed local plan, not organizer requirements. Teachback now uses Gemini, has a source repository, and is hosted on Render. Participation registration and submission remain outstanding.
 
 ## Source and verification
 

@@ -24,7 +24,7 @@ Node.js, browser JavaScript, HTML/CSS, Mozilla PDF.js, and Google Gemini generat
 
 ## Submission links — incomplete
 
-- Accessible working demo: [add after deployment or arrange another judge-accessible demo].
+- Accessible working demo: https://teachback-ai-a8n3.onrender.com
 - Source repository: https://github.com/tarun-vignes/teachback-ai
 - Demo video or screenshots: [capture and attach].
 - Eligibility and full rules: [verify on the official event page].

@@ -4,7 +4,7 @@ import {fileURLToPath} from 'node:url';
 import {validateInput,validateFeedback,schema} from './core.js';
 
 const port=Number(process.env.PORT || 3030), key=process.env.GEMINI_API_KEY;
-const model=process.env.GEMINI_MODEL || 'gemini-3.1-flash-lite';
+const model=process.env.GEMINI_MODEL || 'gemini-3.5-flash-lite';
 const host=process.env.HOST || (process.env.NODE_ENV==='production'?'0.0.0.0':'127.0.0.1');
 const appOrigin=process.env.APP_ORIGIN || process.env.RENDER_EXTERNAL_URL;
 const maxDaily=Number(process.env.MAX_DAILY_REVIEWS || 200);

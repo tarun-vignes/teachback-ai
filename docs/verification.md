@@ -2,7 +2,9 @@
 
 Observed November 10, 2026.
 
-Hosting preparation: nine tests now pass, including unknown-field stripping, health checks, private-file protection, rejection of incorrect/malformed origins, and enforcement of the daily limit before inference. Render Blueprint, production bind address, configured origin, two-call concurrency limit, and a per-process daily request limit are included. Public deployment remains unverified until Render reports success.
+Hosting preparation: nine tests now pass, including unknown-field stripping, health checks, private-file protection, rejection of incorrect/malformed origins, and enforcement of the daily limit before inference. Render Blueprint, production bind address, configured origin, two-call concurrency limit, and a per-process daily request limit are included.
+
+Render confirmed the initial public deployment succeeded at https://teachback-ai-a8n3.onrender.com and the browser loaded the app. The first hosted Gemini 3.1 Flash-Lite call returned high demand. A separate Gemini 3.5 Flash-Lite request returned validated structured feedback, so the default and Blueprint model were updated to that model. Full hosted workflow verification is recorded below when completed.
 
 - Six automated tests passed: valid source matching, fabricated quote downgrade, short/missing quote rejection, whitespace normalization, malformed feedback rejection, and input bounds.
 - JavaScript syntax checks passed for the server and frontend.
@@ -14,4 +16,4 @@ Hosting preparation: nine tests now pass, including unknown-field stripping, hea
 - The live revision request encountered provider unavailability (a diagnostic request confirmed HTTP 503/high demand) and a subsequent timeout. The app displayed errors and preserved the answers. A complete live revision-to-receipt flow remains unverified; the fixed-sample receipt flow passed.
 - All tests use synthetic/original study material. No educational impact or lasting mastery was measured.
 
-Remaining before submission: representative PDF import, broader subject testing, final accessibility review, public hosting/source publication, demo capture, and participant-specific submission details. The in-memory local rate limit is not a distributed production abuse control.
+Remaining before submission: representative PDF import, broader subject testing, final accessibility review, demo capture, and participant-specific submission details. The in-memory local rate limit is not a distributed production abuse control.

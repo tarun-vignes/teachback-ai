@@ -20,4 +20,4 @@ Manual settings if Blueprint import is unavailable: repository `tarun-vignes/tea
 - Raise or lower `MAX_DAILY_REVIEWS` deliberately. Multiple instances would need shared limits before scaling. The Blueprint uses a single free instance.
 - Disable AI by removing the server key or suspend the service to stop further inference. The fixed sample walkthrough requires no provider requests.
 
-No public URL is claimed until Render confirms a successful deployment.
+Public deployment: https://teachback-ai-a8n3.onrender.com — Render confirmed the initial deployment succeeded on November 10, 2026. The original Gemini 3.1 Flash-Lite request returned high demand; the configuration now uses Gemini 3.5 Flash-Lite following a successful structured-output compatibility check. Provider availability can still vary.
