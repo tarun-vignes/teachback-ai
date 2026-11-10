@@ -67,9 +67,10 @@ Limits: 24,000 characters of notes, 4,000 characters per explanation/answer, 5 M
 npm.cmd test
 npm.cmd run check
 npm.cmd audit
+npm.cmd run check:browser
 ```
 
-The automated tests cover evidence matching, invented citations, malformed output, and input limits without network calls. See [verification notes](docs/verification.md) for observed manual and live checks, and [demo script](docs/demo-script.md) for a presentation walkthrough.
+The unit/integration tests cover evidence matching, invented citations, malformed output, and input limits without provider calls. `check:browser` starts an isolated local server and runs 20 browser checks with explicitly mocked AI, including file imports, actual receipt file saving, consent, retry recovery, mobile layouts, and axe accessibility checks. It requires installed Chrome/Edge/Chromium; set `BROWSER_EXECUTABLE` for a nonstandard installation. It uses no API key and saves its report to ignored `artifacts/browser-results.json`. See the [test matrix](docs/test-matrix.md) and [verification notes](docs/verification.md) for observed results and limitations, and the [demo script](docs/demo-script.md) for a walkthrough.
 
 ## Credits and contribution
 

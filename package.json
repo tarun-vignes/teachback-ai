@@ -10,9 +10,14 @@
     "dev": "node --env-file-if-exists=.env server.js",
     "start": "node --env-file-if-exists=.env server.js",
     "test": "node --test",
-    "check": "node --check server.js && node --check public/app.js"
+    "check": "node --check server.js && node --check public/app.js",
+    "check:browser": "node scripts/check-browser.mjs"
   },
   "dependencies": {
     "pdfjs-dist": "^6.5.438"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.14.0",
+    "playwright-core": "^1.65.0"
   }
 }

@@ -2,6 +2,8 @@
 
 Observed November 10, 2026.
 
+Expanded check: see the [test matrix](test-matrix.md). All 20 reproducible local browser checks passed after fixing keyboard upload, stale assessment state, retry recovery, download anchoring, and accessibility contrast/label findings. Actual receipt saving was confirmed in Chrome. Four additional live public AI cases passed: correct explanation, wrong practice answer, unrelated notes, and missing source information. Cold-start and device-specific limits are stated in the matrix.
+
 Hosting preparation: nine tests now pass, including unknown-field stripping, health checks, private-file protection, rejection of incorrect/malformed origins, and enforcement of the daily limit before inference. Render Blueprint, production bind address, configured origin, two-call concurrency limit, and a per-process daily request limit are included.
 
 Render confirmed public deployment at https://teachback-ai-a8n3.onrender.com. The initial Gemini 3.1 Flash-Lite request returned high demand. The default and Blueprint now use Gemini 3.5 Flash-Lite, verified with real inference. Provider high demand also occurred temporarily with the new model before successful hosted calls; switching models does not guarantee availability.
@@ -27,4 +29,4 @@ Render confirmed public deployment at https://teachback-ai-a8n3.onrender.com. Th
 - Earlier local revision requests encountered provider unavailability (a diagnostic request confirmed HTTP 503/high demand) and a subsequent timeout. The app displayed errors and preserved the answers. The complete hosted live flow subsequently passed as described above.
 - All tests use synthetic/original study material. No educational impact or lasting mastery was measured.
 
-Remaining before submission: representative PDF import, broader subject testing, final accessibility review, demo capture, and participant-specific submission details. The in-memory local rate limit is not a distributed production abuse control.
+Remaining before submission: broader real-world PDF/subject/device testing, demo capture, and participant-specific submission details. The in-memory local rate limit is not a distributed production abuse control.
