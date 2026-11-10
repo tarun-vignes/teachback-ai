@@ -8,6 +8,8 @@ Built for [Build Your First AI App 2026](EVENT.md). Functional local prototype; 
 
 Source repository: [tarun-vignes/teachback-ai](https://github.com/tarun-vignes/teachback-ai).
 
+Ready for hosting: [Deploy on Render](https://render.com/deploy?repo=https%3A%2F%2Fgithub.com%2Ftarun-vignes%2Fteachback-ai). This opens deployment setup; it is not an already-live app. See [deployment instructions](docs/deployment.md).
+
 ## Run locally
 
 Requires Node.js 22.19 or newer and npm. From this directory:
@@ -55,7 +57,7 @@ No numerical grades, mastery scores, or long-term learning claims are generated.
 - Reloading clears the session. Downloaded receipts remain wherever the user saves them.
 - Requests have size/length limits, timeouts, same-origin checks, an intent header, and a small per-IP in-memory rate limit.
 
-The server binds to loopback for local use. Public hosting requires a deployment configuration, HTTPS, suitable shared abuse controls, and an explicit privacy review. Do not expose this development server as-is. Uploaded text is treated as untrusted material in the model instructions; prompt injection and incorrect interpretations remain possible.
+The server binds to loopback locally and `0.0.0.0` in production. The Render Blueprint supplies the deployment configuration and HTTPS hosting. In-memory safeguards limit concurrent calls and daily requests, but reset on restart and are not durable spending controls; set provider quotas before public use. See [hosting limits](docs/deployment.md). Uploaded text is treated as untrusted material in the model instructions; prompt injection and incorrect interpretations remain possible.
 
 Limits: 24,000 characters of notes, 4,000 characters per explanation/answer, 5 MB files, and 30 PDF pages. No OCR, accounts, voice input, spaced repetition, or durable history in this version.
 

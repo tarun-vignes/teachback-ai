@@ -2,6 +2,8 @@
 
 Observed November 10, 2026.
 
+Hosting preparation: nine tests now pass, including unknown-field stripping, health checks, private-file protection, rejection of incorrect/malformed origins, and enforcement of the daily limit before inference. Render Blueprint, production bind address, configured origin, two-call concurrency limit, and a per-process daily request limit are included. Public deployment remains unverified until Render reports success.
+
 - Six automated tests passed: valid source matching, fabricated quote downgrade, short/missing quote rejection, whitespace normalization, malformed feedback rejection, and input bounds.
 - JavaScript syntax checks passed for the server and frontend.
 - Upgraded PDF.js after npm reported a security advisory in the initially resolved version. The final installed version is 6.5.438; npm reported zero vulnerabilities at installation.

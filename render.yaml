@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: teachback-ai
+    runtime: node
+    plan: free
+    repo: https://github.com/tarun-vignes/teachback-ai
+    branch: main
+    buildCommand: npm ci --omit=dev && npm test && npm run check
+    startCommand: npm start
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_VERSION
+        value: 22.19.0
+      - key: NODE_ENV
+        value: production
+      - key: HOST
+        value: 0.0.0.0
+      - key: GEMINI_MODEL
+        value: gemini-3.1-flash-lite
+      - key: MAX_DAILY_REVIEWS
+        value: '200'
+      - key: GEMINI_API_KEY
+        sync: false

@@ -5,7 +5,7 @@ export function validateInput(data) {
   }
   if (data.practice !== undefined && (typeof data.practice !== 'string' || data.practice.length > 4000)) throw new Error('Practice answer is too long.');
   if (data.question !== undefined && (typeof data.question !== 'string' || data.question.length > 1500)) throw new Error('Invalid practice question.');
-  return data;
+  return {notes:data.notes,topic:data.topic,explanation:data.explanation,...(data.practice!==undefined?{practice:data.practice}:{}),...(data.question!==undefined?{question:data.question}:{})};
 }
 export const schema = {
   type:'object', required:['summary','findings','question','practiceFeedback'],
