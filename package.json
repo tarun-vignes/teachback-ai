@@ -11,13 +11,17 @@
     "start": "node --env-file-if-exists=.env server.js",
     "test": "node --test",
     "check": "node --check server.js && node --check public/app.js",
-    "check:browser": "node scripts/check-browser.mjs"
+    "check:browser": "node scripts/check-browser.mjs",
+    "check:pdf": "node scripts/prepare-real-pdfs.mjs && node scripts/check-real-pdfs.mjs",
+    "check:live": "node scripts/check-live-ai.mjs",
+    "check:cold": "node scripts/check-cold-start.mjs"
   },
   "dependencies": {
     "pdfjs-dist": "^6.5.438"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.14.0",
+    "pdf-lib": "^1.17.1",
     "playwright-core": "^1.65.0"
   }
 }

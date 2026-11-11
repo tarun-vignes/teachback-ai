@@ -2,6 +2,8 @@
 
 Observed November 10, 2026.
 
+Final expanded results and reproduction commands: [release audit](release-audit.md). It covers the larger API suite, Chrome/Firefox/WebKit browser runs, real PDFs, student-quote grounding, and an observed 22.6-second idle-to-wake transition. Earlier checks below are retained as history.
+
 Expanded check: see the [test matrix](test-matrix.md). All 20 reproducible local browser checks passed after fixing keyboard upload, stale assessment state, retry recovery, download anchoring, and accessibility contrast/label findings. Actual receipt saving was confirmed in Chrome. Four additional live public AI cases passed: correct explanation, wrong practice answer, unrelated notes, and missing source information. Cold-start and device-specific limits are stated in the matrix.
 
 Hosting preparation: nine tests now pass, including unknown-field stripping, health checks, private-file protection, rejection of incorrect/malformed origins, and enforcement of the daily limit before inference. Render Blueprint, production bind address, configured origin, two-call concurrency limit, and a per-process daily request limit are included.

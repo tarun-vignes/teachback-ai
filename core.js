@@ -9,15 +9,16 @@ export function validateInput(data) {
 }
 export const schema = {
   type:'object', required:['summary','findings','question','practiceFeedback'],
-  properties:{summary:{type:'string'},findings:{type:'array',minItems:1,maxItems:4,items:{type:'object',required:['kind','claim','feedback','quote'],properties:{kind:{type:'string',enum:['supported','revisit','uncertain']},claim:{type:'string'},feedback:{type:'string'},quote:{type:'string'}}}},question:{type:'string'},practiceFeedback:{type:'string'}}
+  properties:{summary:{type:'string'},findings:{type:'array',minItems:1,maxItems:4,items:{type:'object',required:['kind','claim','feedback','quote','studentQuote'],properties:{kind:{type:'string',enum:['supported','revisit','uncertain']},claim:{type:'string'},feedback:{type:'string'},quote:{type:'string'},studentQuote:{type:'string'}}}},question:{type:'string'},practiceFeedback:{type:'string'}}
 };
-export function validateFeedback(value, notes) {
+export function validateFeedback(value, notes, explanation) {
   if (!value || typeof value.summary !== 'string' || !value.summary.trim() || value.summary.length > 2000 || typeof value.question !== 'string' || !value.question.trim() || value.question.length > 1500 || typeof value.practiceFeedback !== 'string' || value.practiceFeedback.length > 2000 || !Array.isArray(value.findings) || value.findings.length < 1 || value.findings.length > 4) throw new Error('The AI returned incomplete feedback. Please retry.');
   const normalized = text => text.replace(/\s+/g,' ').trim();
   const findings = value.findings.map(f => {
-    if (!f || !['supported','revisit','uncertain'].includes(f.kind) || ['claim','feedback','quote'].some(k => typeof f[k] !== 'string' || f[k].length > 2000) || !f.claim.trim() || !f.feedback.trim()) throw new Error('The AI returned invalid feedback. Please retry.');
+    if (!f || !['supported','revisit','uncertain'].includes(f.kind) || ['claim','feedback','quote','studentQuote'].some(k => typeof f[k] !== 'string' || f[k].length > 2000) || !f.claim.trim() || !f.feedback.trim()) throw new Error('The AI returned invalid feedback. Please retry.');
     const verified = f.quote.trim().length >= 15 && normalized(notes).includes(normalized(f.quote));
-    return {kind: verified ? f.kind : 'uncertain',claim:f.claim,feedback:verified ? f.feedback : 'The model did not provide a verifiable passage for this point. Check your notes or ask your teacher.',quote:verified ? f.quote : '',verified};
+    const studentVerified=typeof explanation==='string'&&f.studentQuote.trim().length>=12&&normalized(explanation).includes(normalized(f.studentQuote));
+    return {kind: verified&&studentVerified ? f.kind : 'uncertain',claim:f.claim,feedback:!studentVerified?'The model did not provide a matching passage from your explanation for this point. Treat it as uncertain.':verified ? f.feedback : 'The model did not provide a verifiable passage for this point. Check your notes or ask your teacher.',quote:verified ? f.quote : '',verified,studentQuote:studentVerified?f.studentQuote:'',studentVerified};
   });
   return {summary:value.summary,findings,question:value.question,practiceFeedback:value.practiceFeedback};
 }

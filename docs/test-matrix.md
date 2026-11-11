@@ -1,6 +1,6 @@
 # Test matrix
 
-Checked November 10, 2026. These are bounded functional checks, not proof that every model response, PDF, browser, or accessibility configuration will work.
+Initial check on November 10, 2026. The later [release audit](release-audit.md) expands this matrix to three browser engines, real PDF fixtures, deeper API tests, additional real-AI cases, and an actual idle-to-wake observation. These remain bounded functional checks, not proof that every model response, PDF, browser, or accessibility configuration will work.
 
 ## Real AI on the public app
 

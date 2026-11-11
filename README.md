@@ -43,7 +43,7 @@ The sample button activates a **fixed walkthrough**, not AI. Changing the notes,
 
 The Node server calls Gemini's [generateContent API](https://ai.google.dev/api/generate-content) with [structured JSON output](https://ai.google.dev/gemini-api/docs/structured-output). The model identifies meaningful points in the explanation, connects them to supplied passages, proposes a follow-up question, and reviews the revised explanation and practice answer.
 
-The server validates field types, lengths, categories, and finding counts. It checks that each quoted passage appears in the notes, allowing whitespace differences only. A missing, tiny, or fabricated quote downgrades a finding to uncertain and removes its unsupported explanation. Source matching verifies the presence of a passage; it cannot prove the model interpreted that passage correctly. Summaries, questions, and practice reflections remain model-generated and can be wrong.
+The server validates field types, lengths, categories, and finding counts. Each finding must quote both the supplied notes and the student's actual explanation, allowing whitespace differences only. Missing or fabricated passages downgrade the finding to uncertain. The coach is instructed to treat missing facts and conflicting notes as uncertain. Quote matching verifies text presence; it cannot prove the model interpreted those passages correctly. Summaries, questions, and practice reflections remain model-generated and can be wrong.
 
 No numerical grades, mastery scores, or long-term learning claims are generated. The receipt documents a single practice session.
 
@@ -70,10 +70,10 @@ npm.cmd audit
 npm.cmd run check:browser
 ```
 
-The unit/integration tests cover evidence matching, invented citations, malformed output, and input limits without provider calls. `check:browser` starts an isolated local server and runs 20 browser checks with explicitly mocked AI, including file imports, actual receipt file saving, consent, retry recovery, mobile layouts, and axe accessibility checks. It requires installed Chrome/Edge/Chromium; set `BROWSER_EXECUTABLE` for a nonstandard installation. It uses no API key and saves its report to ignored `artifacts/browser-results.json`. See the [test matrix](docs/test-matrix.md) and [verification notes](docs/verification.md) for observed results and limitations, and the [demo script](docs/demo-script.md) for a walkthrough.
+The 24 unit/integration checks cover provider failures, source/student grounding, input bounds, concurrency, request limits, UTF-8 transport and private-file protection without provider calls. `check:browser` runs 27 checks in Chrome/WebKit or 26 in Firefox with explicitly mocked AI. It requires installed Chrome/Edge by default; set `BROWSER_EXECUTABLE` for a nonstandard path or `TEST_BROWSER=firefox`/`webkit` after installing that engine. Reports go to ignored `artifacts/browser-results-<engine>.json`. See the [release audit](docs/release-audit.md) for real PDF tests, browser setup, the actual cold-start observation, live model cases, and physical-device/screen-reader limits. The [demo script](docs/demo-script.md) provides a presentation walkthrough.
 
 ## Credits and contribution
 
-Original app interface, workflow, prompts, validation, example material, and documentation were developed with OpenAI Codex assistance. PDF.js is a Mozilla project under Apache-2.0; dependencies retain their licenses. Google Gemini supplies live inference. Typography uses installed system fonts; there are no third-party image assets.
+Original app interface, workflow, prompts, validation, example material, and documentation were developed with OpenAI Codex assistance. PDF.js is a Mozilla project under Apache-2.0; dependencies retain their licenses. Playwright, axe and pdf-lib are development/test tools. Public PDF test fixtures retain their original rights and are downloaded only to ignored local artifacts. Google Gemini supplies live inference. Typography uses installed system fonts; there are no third-party image assets.
 
 Before submitting, add your own account of what you built, what you understand, and what you learned. No participant learning outcomes or user-study results are claimed here. See the [submission draft](docs/submission-draft.md).
